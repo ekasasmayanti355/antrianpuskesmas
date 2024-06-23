@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrian Puskesmas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #007bff;
+        }
+
+        .form-section, .queue-section {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h2, .queue-section h2 {
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #e9ecef;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Antrian Puskesmas</h1>
+        </header>
+        <main>
+            <div class="form-section">
+                <h2>Tambah Pasien</h2>
+                <form id="patientForm">
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" required>
+                    <label for="complaint">Keluhan:</label>
+                    <input type="text" id="complaint" required>
+                    <button type="submit">Tambahkan</button>
+                </form>
+            </div>
+            <div class="queue-section">
+                <h2>Daftar Antrian</h2>
+                <ul id="queueList"></ul>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.getElementById('patientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const complaint = document.getElementById('complaint').value;
+
+            if (name && complaint) {
+                const li = document.createElement('li');
+                li.textContent = Nama: ${name}, Keluhan: ${complaint};
+                
+                document.getElementById('queueList').appendChild(li);
+
+                document.getElementById('name').value = '';
+                document.getElementById('complaint').value = '';
+            }
+        });
+    </script>
+</body>
+</html>
